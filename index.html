@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClubReserve</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header><a class="brand" href="#">CR <strong>ClubReserve</strong></a><nav><a class="active">Rezervasyon</a><a>Tesisler</a></nav><button class="avatar">DY</button></header>
+  <main>
+    <section class="sports" aria-label="Spor türü">
+      <button class="sport active" data-sport="futbol"><span>⚽</span><b>Futbol</b><small>Halı saha</small></button>
+      <button class="sport" data-sport="tenis"><span>🎾</span><b>Tenis</b><small>Kapalı / Açık</small></button>
+      <button class="sport" data-sport="voleybol"><span>🏐</span><b>Voleybol</b><small>Salon</small></button>
+      <button class="sport" data-sport="golf"><span>⛳</span><b>Golf</b><small>Driving range</small></button>
+    </section>
+    <section class="layout">
+      <div class="calendar panel">
+        <div class="panel-head"><div><small>1. ADIM</small><h1>Tarih ve saat seçin</h1></div><div class="month"><button id="prev">‹</button><b id="monthLabel"></b><button id="next">›</button></div></div>
+        <div class="weekdays"><span>Pzt</span><span>Sal</span><span>Çar</span><span>Per</span><span>Cum</span><span>Cmt</span><span>Paz</span></div>
+        <div class="dates" id="dates"></div>
+        <h3>Uygun saatler <small id="dateLabel"></small></h3><div class="times" id="times"></div>
+      </div>
+      <aside class="summary panel">
+        <div class="cover" id="cover"></div><div class="summary-body">
+          <small>REZERVASYON ÖZETİ</small><h2>Moda Spor Kompleksi</h2>
+          <div><small>Spor</small><b id="sportSummary">Futbol - Halı Saha</b></div>
+          <div><small>Saha</small><b id="courtSummary">Saha A</b></div>
+          <div><small>Tarih & Saat</small><b id="dateSummary">Tarih seçin</b></div>
+          <div><small>Süre</small><div class="durations"><button data-duration="60">60 dk</button><button class="selected" data-duration="90">90 dk</button><button data-duration="120">120 dk</button></div></div>
+          <div class="total"><span>Toplam</span><b id="price">₺1.350</b></div>
+          <button id="reserve" disabled>Saat seçin</button>
+        </div>
+      </aside>
+    </section>
+    <section class="my-bookings"><h2>Rezervasyonlarım</h2><div id="bookings"></div></section>
+  </main>
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <button class="close" id="close" aria-label="Kapat">×</button>
+      <div id="paymentView">
+        <small>KAPORA ÖDEMESİ</small>
+        <h2>Rezervasyonu güvenceye alın</h2>
+        <p class="payment-note" id="paymentDetails"></p>
+        <div class="deposit">Kapora <strong id="depositAmount"></strong></div>
+        <div class="bank-box">
+          <span>Alıcı</span><strong>Dağıstan Yağız Yüce</strong>
+          <span>IBAN</span><strong class="iban">TR000000444455550000</strong>
+          <span>Banka</span><strong>Garanti Bankası</strong>
+        </div>
+        <button id="sentPayment">Gönderdim</button>
+      </div>
+      <div id="successView" hidden>
+        <div class="check">✓</div>
+        <small>REZERVASYON OLUŞTURULDU</small>
+        <h2>Randevunuz başarıyla oluşturuldu</h2>
+        <p id="modalDetails"></p>
+        <button id="viewBookings">Rezervasyonlarım</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal policy-modal open" id="policyModal">
+    <div class="policy-card">
+      <button class="policy-close" id="policyClose" aria-label="Politikayı kapat">×</button>
+      <div class="policy-icon">12</div>
+      <h2>Randevu saatinden 12 saat geçmediyse kapora ücretinin iadesi için IBAN bilgileri alınır.</h2>
+      <p>Randevu saatinden 12 saat geçtiğinde prosedür gereği iptal yapılamaz.</p>
+    </div>
+  </div>
+  <div class="modal" id="cancelModal">
+    <div class="modal-card cancellation-card">
+      <button class="close" id="cancelClose" aria-label="Kapat">×</button>
+      <small>KAPORA İADE TALEBİ</small>
+      <h2>İade bilgilerinizi girin</h2>
+      <p>Randevu saatinden henüz 12 saat geçmediği için kapora iadesini yapabileceğimiz hesap bilgilerini doldurun.</p>
+      <label>Hesap sahibi</label>
+      <input id="refundOwner" type="text" placeholder="Ad Soyad">
+      <label>IBAN</label>
+      <input id="refundIban" type="text" placeholder="TR00 0000 0000 0000 0000 0000 00">
+      <label>Banka</label>
+      <select id="refundBank">
+        <option value="">Banka seçin</option>
+        <option>Garanti Bankası</option>
+        <option>Ziraat Bankası</option>
+        <option>VakıfBank</option>
+        <option>Yapı Kredi Bankası</option>
+        <option>İş Bankası</option>
+        <option>Akbank</option>
+      </select>
+      <button id="confirmCancellation">İptal Talebini Gönder</button>
+    </div>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
